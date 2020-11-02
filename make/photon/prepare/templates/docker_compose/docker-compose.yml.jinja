@@ -366,12 +366,12 @@ services:
 {% endif %}
     dns_search: .
     ports:
-      - {{http_port}}:8080
+      - {{bind_address}}:{{http_port}}:8080
 {% if protocol == 'https' %}
-      - {{https_port}}:8443
+      - {{bind_address}}:{{https_port}}:8443
 {% endif %}
 {% if with_notary %}
-      - 4443:4443
+      - {{bind_address}}:4443:4443
 {% endif %}
     depends_on:
       - registry

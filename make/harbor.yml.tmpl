@@ -191,6 +191,10 @@ _version: 2.0.0
 # uaa:
 #   ca_file: /path/to/ca
 
+# Bind address for docker-compose. Change it to the interface IP address to bind harbor to a specific interface.
+# Default if '0.0.0.0', bind on all addresses.
+bind_address: '0.0.0.0'
+
 # Global proxy
 # Config http proxy for components, e.g. http://my.proxy.com:3128
 # Components doesn't need to connect to each others via http proxy.
