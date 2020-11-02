@@ -114,6 +114,7 @@ def parse_yaml_config(config_file_path, with_notary, with_clair, with_trivy, wit
     config_dict['protocol'] = 'http'
     http_config = configs.get('http') or {}
     config_dict['http_port'] = http_config.get('port', 80)
+    config_dict['bind_address'] = configs.get('bind_address') or "0.0.0.0"
 
     https_config = configs.get('https')
     if https_config:

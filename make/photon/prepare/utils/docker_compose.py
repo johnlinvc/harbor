@@ -25,6 +25,7 @@ def prepare_docker_compose(configs, with_clair, with_trivy, with_notary, with_ch
         'log_location': configs['log_location'],
         'protocol': configs['protocol'],
         'http_port': configs['http_port'],
+        'bind_address': configs['bind_address'],
         'external_redis': configs['external_redis'],
         'external_database': configs['external_database'],
         'with_notary': with_notary,
@@ -60,7 +61,5 @@ def prepare_docker_compose(configs, with_clair, with_trivy, with_notary, with_ch
     log_ep_host = configs.get('log_ep_host')
     if log_ep_host:
         rendering_variables['external_log_endpoint'] = True
-
-    rendering_variables['bind_address'] = configs['bind_address'] or '0.0.0.0'
 
     render_jinja(docker_compose_template_path, docker_compose_yml_path,  mode=0o644, **rendering_variables)
